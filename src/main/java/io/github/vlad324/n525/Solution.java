@@ -1,8 +1,12 @@
-package io.github.vlad324;
+package io.github.vlad324.n525;
 
 import java.util.HashMap;
 
-public class ContiguousArray {
+/**
+ * {@link "https://leetcode.com/problems/contiguous-array/"}
+ */
+class Solution {
+
     public int findMaxLength(int[] nums) {
         int sum = 0;
         int maxLength = 0;

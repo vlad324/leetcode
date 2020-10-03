@@ -1,4 +1,4 @@
-package io.github.vlad324;
+package io.github.vlad324.n525;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -9,9 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class ContiguousArrayTest {
+class SolutionTest {
 
-    private final ContiguousArray contiguousArray = new ContiguousArray();
+    private final Solution solution = new Solution();
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.of(
@@ -33,7 +33,7 @@ class ContiguousArrayTest {
     @MethodSource("testDataProvider")
     void should_produce_expected_result(int[] nums, int expected) {
         // when
-        final var actual = contiguousArray.findMaxLength(nums);
+        final var actual = solution.findMaxLength(nums);
 
         // then
         assertThat(actual).isEqualTo(expected);
