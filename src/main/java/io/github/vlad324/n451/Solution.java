@@ -1,4 +1,4 @@
-package io.github.vlad324;
+package io.github.vlad324.n451;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 /**
  * {@link "https://leetcode.com/problems/sort-characters-by-frequency/"}
  */
-public class CharacterSort {
+class Solution {
+
     public String frequencySort(String s) {
         return s.chars()
             .mapToObj(i -> (char) i)
