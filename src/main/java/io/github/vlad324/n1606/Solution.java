@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 /**
  * {@link "https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/"}
@@ -13,22 +14,23 @@ class Solution {
         final var requestCounts = new HashMap<Integer, Integer>();
 
         final var serversLoad = new PriorityQueue<Node>();
-        final var busy = new boolean[k];
+        final var free = new TreeSet<Integer>();
+        for (int i = 0; i < k; i++) {
+            free.add(i);
+        }
 
         int maxRequestCount = 0;
         for (int i = 0; i < arrival.length; i++) {
             while (!serversLoad.isEmpty() && serversLoad.peek().nextAvailable <= arrival[i]) {
-                busy[serversLoad.poll().serverIndex] = false;
+                free.add(serversLoad.poll().serverIndex);
             }
 
-            var serverIndex = i % k;
-            serverIndex = findAvailableServerIndex(k, busy, serverIndex);
-
-            if (serverIndex == -1) {
+            var serverIndex = free.ceiling(i % k);
+            if (serverIndex == null && ((serverIndex = free.ceiling(0)) == null)) {
                 continue;
             }
 
-            busy[serverIndex] = true;
+            free.remove(serverIndex);
             serversLoad.add(new Node(serverIndex, arrival[i] + load[i]));
 
             final var newCount = requestCounts.compute(serverIndex, (key, value) -> value == null ? 1 : value + 1);
@@ -45,22 +47,6 @@ class Solution {
         }
 
         return result;
-    }
-
-    private int findAvailableServerIndex(int k, boolean[] busy, int serverIndex) {
-        for (int i = serverIndex; i < k; i++) {
-            if (!busy[i]) {
-                return i;
-            }
-        }
-
-        for (int i = 0; i < serverIndex; i++) {
-            if (!busy[i]) {
-                return i;
-            }
-        }
-
-        return -1;
     }
 
     private static class Node implements Comparable<Node> {
