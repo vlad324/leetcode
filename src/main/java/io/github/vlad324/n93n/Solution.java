@@ -1,4 +1,4 @@
-package io.github.vlad324.n93;
+package io.github.vlad324.n93n;
 
 import java.util.Collections;
 import java.util.List;

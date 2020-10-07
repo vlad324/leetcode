@@ -24,7 +24,8 @@ class SolutionTest {
                 List.of(3),
                 List.of(1, 2),
                 List.of(1, 3),
-                List.of(2, 3)
+                List.of(2, 3),
+                List.of(1, 2, 3)
             ))
         );
     }
@@ -36,6 +37,6 @@ class SolutionTest {
         final var actual = solution.subsets(nums);
 
         // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
 }

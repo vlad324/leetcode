@@ -1,5 +1,7 @@
 package io.github.vlad324.n430;
 
+import java.util.Objects;
+
 /**
  * {@link "https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/"}
  */
@@ -43,9 +45,35 @@ class Solution {
     }
 
     static class Node {
-        public int val;
-        public Node prev;
-        public Node next;
-        public Node child;
+        int val;
+        Node prev;
+        Node next;
+        Node child;
+
+        public Node(int val) {
+            this(val, null, null, null);
+        }
+
+        public Node(int val, Node prev, Node next, Node child) {
+            this.val = val;
+            this.prev = prev;
+            this.next = next;
+            this.child = child;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            final Node node = (Node) o;
+            return val == node.val &&
+                Objects.equals(next, node.next) &&
+                Objects.equals(child, node.child);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(val, next, child);
+        }
     }
 }

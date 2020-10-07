@@ -1,6 +1,7 @@
 package io.github.vlad324.n399;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.data.Offset.offset;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -53,7 +54,7 @@ class SolutionTest {
         final var actual = solution.calcEquation(equations, values, queries);
 
         // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).containsExactly(expected, offset(0.00001d));
     }
 
 }
