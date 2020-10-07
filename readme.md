@@ -1,0 +1,1 @@
+![Build](https://github.com/vlad324/leetcode/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
