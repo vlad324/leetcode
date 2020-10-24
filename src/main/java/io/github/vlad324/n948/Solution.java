@@ -23,8 +23,9 @@ class Solution {
                 i++;
             } else if (score != 0 && j - i > 1) {
                 P += tokens[j];
-                score--;
                 j--;
+                P -= tokens[i];
+                i++;
             } else {
                 break;
             }
