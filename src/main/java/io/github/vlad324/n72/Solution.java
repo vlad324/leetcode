@@ -1,6 +1,9 @@
-package io.github.vlad324;
+package io.github.vlad324.n72;
 
-public class EditDistance {
+/**
+ * {@link "https://leetcode.com/problems/edit-distance/"}
+ */
+class Solution {
     public int minDistance(String word1, String word2) {
         if (word1.isEmpty() || word2.isEmpty()) {
             return Math.max(word1.length(), word2.length());

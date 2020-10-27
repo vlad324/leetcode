@@ -1,4 +1,4 @@
-package io.github.vlad324;
+package io.github.vlad324.n72;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -9,10 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class EditDistanceTest {
+class SolutionTest {
 
-
-    private final EditDistance editDistance = new EditDistance();
+    private final Solution editDistance = new Solution();
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.of(
