@@ -1,9 +1,9 @@
-package io.github.vlad324;
+package io.github.vlad324.n7;
 
 /**
  * {@link "https://leetcode.com/problems/reverse-integer/"}
  */
-public class IntegerReverse {
+class Solution {
     public int reverse(int x) {
         final var sb = new StringBuilder(String.valueOf(x)).reverse();
         if (x < 0) {

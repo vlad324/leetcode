@@ -1,4 +1,4 @@
-package io.github.vlad324;
+package io.github.vlad324.n7;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -9,18 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class IntegerReverseTest {
-    private final IntegerReverse integerReverse = new IntegerReverse();
+class SolutionTest {
 
-    @ParameterizedTest
-    @MethodSource("testDataProvider")
-    void should_produce_expected_result(int input, int expected) {
-        // when
-        final var actual = integerReverse.reverse(input);
-
-        // then
-        assertThat(actual).isEqualTo(expected);
-    }
+    private final Solution solution = new Solution();
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.of(
@@ -31,5 +22,15 @@ class IntegerReverseTest {
             arguments(120, 21),
             arguments(Integer.MAX_VALUE, 0)
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("testDataProvider")
+    void should_produce_expected_result(int input, int expected) {
+        // when
+        final var actual = solution.reverse(input);
+
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 }
