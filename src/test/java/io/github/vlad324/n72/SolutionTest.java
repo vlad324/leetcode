@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 class SolutionTest {
 
-    private final Solution editDistance = new Solution();
+    private final Solution solution = new Solution();
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.of(
@@ -29,7 +29,7 @@ class SolutionTest {
     @MethodSource("testDataProvider")
     void should_produce_expected_result(String s1, String s2, int expected) {
         // when
-        final var actual = editDistance.minDistance(s1, s2);
+        final var actual = solution.minDistance(s1, s2);
 
         // then
         assertThat(actual).isEqualTo(expected);
