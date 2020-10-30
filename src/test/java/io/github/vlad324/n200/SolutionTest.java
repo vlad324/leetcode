@@ -1,4 +1,4 @@
-package io.github.vlad324;
+package io.github.vlad324.n200;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -10,15 +10,15 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-class NumberOfIslandsTest {
+class SolutionTest {
 
-    private final NumberOfIslands numberOfIslands = new NumberOfIslands();
+    private final Solution solution = new Solution();
 
     @ParameterizedTest
     @MethodSource({"testDataProvider"})
     void should_return_excepted_result(char[][] grid, int exceptedCount) {
         // when
-        final var actualCount = numberOfIslands.numIslands(grid);
+        final var actualCount = solution.numIslands(grid);
 
         // then
         assertThat(actualCount).isEqualTo(exceptedCount);

@@ -1,10 +1,9 @@
-package io.github.vlad324;
+package io.github.vlad324.n200;
 
 /**
  * {@link "https://leetcode.com/problems/number-of-islands/"}
- * Counting the number of connected components in an undirected graph
  */
-public class NumberOfIslands {
+class Solution {
     private static final char LAND_MARK = '1';
 
     private static final byte NEIGHBOR_ROW_POSITION = 0;
