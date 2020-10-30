@@ -1,11 +1,11 @@
-package io.github.vlad324;
+package io.github.vlad324.n986;
 
 import java.util.ArrayList;
 
 /**
  * {@link "https://leetcode.com/problems/interval-list-intersections/"}
  */
-public class IntervalIntersections {
+class Solution {
     public int[][] intervalIntersection(int[][] A, int[][] B) {
         if (A.length == 0 || B.length == 0 || A[A.length - 1][1] < B[0][0] || B[B.length - 1][1] < A[0][0]) {
             return new int[0][0];

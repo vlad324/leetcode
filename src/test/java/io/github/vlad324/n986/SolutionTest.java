@@ -1,4 +1,4 @@
-package io.github.vlad324;
+package io.github.vlad324.n986;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -9,9 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class IntervalIntersectionsTest {
+class SolutionTest {
 
-    private final IntervalIntersections intervalIntersections = new IntervalIntersections();
+    private final Solution solution = new Solution();
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.of(
@@ -37,7 +37,7 @@ class IntervalIntersectionsTest {
     @MethodSource("testDataProvider")
     void should_produce_expected_result(int[][] a, int[][] b, int[][] expected) {
         // when
-        final var actual = intervalIntersections.intervalIntersection(a, b);
+        final var actual = solution.intervalIntersection(a, b);
 
         // then
         assertThat(actual).isEqualTo(expected);
