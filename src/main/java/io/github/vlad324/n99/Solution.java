@@ -6,49 +6,36 @@ import java.util.Objects;
  * {@link "https://leetcode.com/problems/recover-binary-search-tree/"}
  */
 class Solution {
+    TreeNode firstElement;
+    TreeNode secondElement;
+    TreeNode prevElement;
+
     public void recoverTree(TreeNode root) {
-        while (true) {
-            final var result = new Result();
-            findInvalidNode(root, Long.MIN_VALUE, Long.MAX_VALUE, result);
+        inOrder(root);
 
-            if (result.node1 == null) {
-                return;
-            }
-
-            result.node2.val = result.node1.val;
-            result.node1.val = (int) result.valueOfNode2;
-        }
+        int tmp = firstElement.val;
+        firstElement.val = secondElement.val;
+        secondElement.val = tmp;
     }
 
-    private void findInvalidNode(TreeNode node, long minValue, long maxValue, Result result) {
-        if (node == null || result.node1 != null) {
+    private void inOrder(TreeNode node) {
+        if (node == null) {
             return;
         }
 
-        if (node.val < minValue) {
-            result.node1 = node;
-            result.valueOfNode2 = minValue;
-            return;
+        inOrder(node.left);
+
+        if (firstElement == null && prevElement != null && prevElement.val > node.val) {
+            firstElement = prevElement;
         }
 
-        if (node.val > maxValue) {
-            result.node1 = node;
-            result.valueOfNode2 = maxValue;
-            return;
+        if (firstElement != null && prevElement.val > node.val) {
+            secondElement = node;
         }
 
-        findInvalidNode(node.left, minValue, node.val, result);
-        findInvalidNode(node.right, node.val, maxValue, result);
+        prevElement = node;
 
-        if (result.node1 != null && node.val == result.valueOfNode2) {
-            result.node2 = node;
-        }
-    }
-
-    static class Result {
-        TreeNode node1;
-        long valueOfNode2;
-        TreeNode node2;
+        inOrder(node.right);
     }
 
     static class TreeNode {
