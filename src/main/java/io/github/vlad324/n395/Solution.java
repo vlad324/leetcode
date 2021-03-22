@@ -3,7 +3,7 @@ package io.github.vlad324.n395;
 /**
  * {@link "https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/"}
  */
-public class Solution {
+class Solution {
     public int longestSubstring(String s, int k) {
         int result = 0;
         int maxUnique = countUniqueLetters(s);
