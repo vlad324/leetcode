@@ -1,32 +1,48 @@
 package io.github.vlad324.n234;
 
-import java.util.ArrayList;
-
 /**
  * {@link "https://leetcode.com/problems/palindrome-linked-list/"}
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        final var list = new ArrayList<Integer>();
-
-        while (head != null) {
-            list.add(head.val);
-            head = head.next;
+        var fast = head;
+        var slow = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        final var size = list.size();
-        for (int i = 0; i < size / 2; i++) {
-            if (!list.get(i).equals(list.get(size - 1 - i))) {
+        if (fast != null) {
+            slow = slow.next;
+        }
+
+        var reversedHead = reverseList(slow);
+        while (reversedHead != null) {
+            if (head.val != reversedHead.val) {
                 return false;
             }
+            head = head.next;
+            reversedHead = reversedHead.next;
         }
 
         return true;
     }
 
+    private ListNode reverseList(ListNode slow) {
+        ListNode previous = null;
+        while (slow != null) {
+            var next = slow.next;
+            slow.next = previous;
+            previous = slow;
+            slow = next;
+        }
+
+        return previous;
+    }
+
     public static class ListNode {
-        private final int val;
-        private final ListNode next;
+        private int val;
+        private ListNode next;
 
         ListNode(int val) {
             this(val, null);
