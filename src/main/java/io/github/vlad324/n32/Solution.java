@@ -5,30 +5,40 @@ package io.github.vlad324.n32;
  */
 class Solution {
     public int longestValidParentheses(String s) {
-        int result = 0;
+        int max = 0;
+        int open = 0;
+        int close = 0;
+
         for (int i = 0; i < s.length(); i++) {
-            for (int j = i + 2; j <= s.length(); j += 2) {
-                if (isValid(s, i, j)) {
-                    result = Math.max(result, j - i);
-                }
-            }
-        }
-
-        return result;
-    }
-
-    private boolean isValid(String s, int i, int j) {
-        int openCount = 0;
-        for (int k = i; k < j; k++) {
-            if (s.charAt(k) == '(') {
-                openCount++;
-            } else if (openCount != 0) {
-                openCount--;
+            if (s.charAt(i) == '(') {
+                open++;
             } else {
-                return false;
+                close++;
+            }
+            if (open == close) {
+                max = Math.max(max, open * 2);
+            } else if (close > open) {
+                close = 0;
+                open = 0;
             }
         }
 
-        return openCount == 0;
+        open = 0;
+        close = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == '(') {
+                open++;
+            } else {
+                close++;
+            }
+            if (open == close) {
+                max = Math.max(max, open * 2);
+            } else if (open > close) {
+                close = 0;
+                open = 0;
+            }
+        }
+
+        return max;
     }
 }
