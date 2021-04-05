@@ -5,19 +5,30 @@ package io.github.vlad324.n775;
  */
 class Solution {
     public boolean isIdealPermutation(int[] A) {
-        int global = 0;
         int local = 0;
-
+        int[] positions = new int[A.length];
         for (int i = 0; i < A.length; i++) {
             if (i < A.length - 1 && A[i] > A[i + 1]) {
                 local++;
             }
-            for (int j = i + 1; j < A.length; j++) {
-                if (A[i] > A[j]) {
-                    global++;
+
+            positions[A[i]] = i;
+        }
+
+        int global = 0;
+        for (int i = 0; i < positions.length; i++) {
+            global += positions[i];
+            for (int j = i - 1; j >= 0; j--) {
+                if (positions[j] < positions[i]) {
+                    global--;
                 }
             }
+
+            if (global > local) {
+                return false;
+            }
         }
+
         return global == local;
     }
 }
