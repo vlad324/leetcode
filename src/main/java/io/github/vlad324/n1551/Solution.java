@@ -5,16 +5,12 @@ package io.github.vlad324.n1551;
  */
 class Solution {
     public int minOperations(int n) {
-        int c = 0;
-        for (int i = 0; i < n; i++) {
-            final var q = n - 2 * i - 1;
-            if (q > 0) {
-                c += q;
-            } else {
-                break;
-            }
+        if (n % 2 == 1) {
+            int N = (n - 1) / 2;
+            return N * (N + 1);
         }
 
-        return c;
+        int N = n / 2;
+        return N * N;
     }
 }
