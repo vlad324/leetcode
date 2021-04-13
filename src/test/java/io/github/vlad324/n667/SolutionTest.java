@@ -17,7 +17,7 @@ class SolutionTest {
         return Stream.<Arguments>builder()
             .add(arguments(3, 1, new int[]{1, 2, 3}))
             .add(arguments(3, 2, new int[]{1, 3, 2}))
-            .add(arguments(4, 2, new int[]{1, 3, 2, 4}))
+            .add(arguments(4, 2, new int[]{1, 2, 4, 3}))
             .build();
     }
 
