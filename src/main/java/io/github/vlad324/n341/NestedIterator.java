@@ -1,7 +1,7 @@
 package io.github.vlad324.n341;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -9,34 +9,37 @@ import java.util.List;
  */
 class NestedIterator implements Iterator<Integer> {
 
-    private final List<NestedInteger> list;
+    private int index = 0;
+    private final List<Integer> result = new ArrayList<>();
 
     public NestedIterator(List<NestedInteger> nestedList) {
-        this.list = new LinkedList<>(nestedList);
+        for (final var n : nestedList) {
+            flatten(n);
+        }
     }
 
     @Override
     public Integer next() {
-        return list.remove(0).getInteger();
+        return result.get(index++);
     }
 
     @Override
     public boolean hasNext() {
-        if (!list.isEmpty()) {
-            if (list.get(0).isInteger()) {
-                return true;
+        return index < result.size();
+    }
+
+    private void flatten(NestedInteger nestedInteger) {
+        if (nestedInteger.isInteger()) {
+            result.add(nestedInteger.getInteger());
+        } else {
+            for (final var n : nestedInteger.getList()) {
+                flatten(n);
             }
-
-            final var subList = list.remove(0).getList();
-            list.addAll(0, subList);
-
-            return hasNext();
         }
-
-        return false;
     }
 
     public interface NestedInteger {
+
         /**
          * @return true if this NestedInteger holds a single integer, rather than a nested list.
          */
