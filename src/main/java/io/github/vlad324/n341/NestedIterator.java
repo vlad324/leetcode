@@ -1,7 +1,7 @@
 package io.github.vlad324.n341;
 
-import java.util.ArrayDeque;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -9,35 +9,32 @@ import java.util.List;
  */
 class NestedIterator implements Iterator<Integer> {
 
-    private final ArrayDeque<NestedInteger> deque;
+    private final List<NestedInteger> list;
 
     public NestedIterator(List<NestedInteger> nestedList) {
-        this.deque = new ArrayDeque<>(nestedList);
+        this.list = new LinkedList<>(nestedList);
     }
 
     @Override
     public Integer next() {
-        return deque.poll().getInteger();
+        return list.remove(0).getInteger();
     }
 
     @Override
     public boolean hasNext() {
-        if (!deque.isEmpty()) {
-            if (deque.peek().isInteger()) {
+        if (!list.isEmpty()) {
+            if (list.get(0).isInteger()) {
                 return true;
             }
 
-            final var list = deque.poll().getList();
-            for (int i = list.size() - 1; i >= 0; i--) {
-                deque.offerFirst(list.get(i));
-            }
+            final var subList = list.remove(0).getList();
+            list.addAll(0, subList);
 
             return hasNext();
         }
 
         return false;
     }
-
 
     public interface NestedInteger {
         /**
