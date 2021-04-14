@@ -40,7 +40,7 @@ class Solution {
         return previous;
     }
 
-    public static class ListNode {
+    static class ListNode {
         private int val;
         private ListNode next;
 
