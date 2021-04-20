@@ -40,9 +40,11 @@ class SolutionTest {
     void should_produce_expected_result(Node root, List<Integer> expected) {
         // when
         final var actual = solution.preorder(root);
+        final var actualSequential = solution.preorderSequential(root);
 
         // then
         assertThat(actual).isEqualTo(expected);
+        assertThat(actualSequential).isEqualTo(expected);
     }
 
 }
