@@ -7,6 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -18,14 +20,14 @@ class SolutionTest {
         return Stream.<Arguments>builder()
             .add(arguments(
                 List.of(
-                    List.of(2),
-                    List.of(3, 4),
-                    List.of(6, 5, 7),
-                    List.of(4, 1, 8, 3)
+                    list(2),
+                    list(3, 4),
+                    list(6, 5, 7),
+                    list(4, 1, 8, 3)
                 ),
                 11
             ))
-            .add(arguments(List.of(List.of(-10)), -10))
+            .add(arguments(List.of(list(-10)), -10))
             .build();
     }
 
@@ -39,4 +41,7 @@ class SolutionTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    private static <T> List<T> list(T... values) {
+        return new ArrayList<>(Arrays.asList(values));
+    }
 }
