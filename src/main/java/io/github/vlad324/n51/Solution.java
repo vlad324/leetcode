@@ -22,7 +22,7 @@ class Solution {
         return result;
     }
 
-    public void helper(int i,
+    private void helper(int i,
                        Set<Integer> columns,
                        Set<Integer> diagonals,
                        Set<Integer> antidiagonals,
