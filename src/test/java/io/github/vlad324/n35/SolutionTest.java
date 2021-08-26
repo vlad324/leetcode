@@ -29,8 +29,10 @@ class SolutionTest {
     void should_produce_expected_result(int[] nums, int target, int expected) {
         // when
         final var actual = solution.searchInsert(nums, target);
+        final var actual2 = solution.searchInsert2(nums, target);
 
         // then
         assertThat(actual).isEqualTo(expected);
+        assertThat(actual2).isEqualTo(expected);
     }
 }
