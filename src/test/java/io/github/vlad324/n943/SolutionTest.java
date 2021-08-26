@@ -1,4 +1,4 @@
-package io.github.vlad324.n537;
+package io.github.vlad324.n943;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -15,19 +15,19 @@ class SolutionTest {
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.<Arguments>builder()
-            .add(arguments("1+1i", "1+1i", "0+2i"))
-            .add(arguments("1+-1i", "1+-1i", "0+-2i"))
-            .add(arguments("5+-2i", "4+3i", "26+7i"))
-            .add(arguments("5+2i", "4+-3i", "26+-7i"))
+            .add(arguments(new String[]{"alex", "loves", "leetcode"}, "alexlovesleetcode"))
+            .add(arguments(new String[]{"catg", "ctaagt", "gcta", "ttca", "atgcatc"}, "gctaagttcatgcatc"))
             .build();
     }
 
     @ParameterizedTest
     @MethodSource("testDataProvider")
-    void should_produce_expected_result(String num1, String num2, String expected) {
+    void should_produce_expected_result(String[] words, String expected) {
+        // when
+        final var actual = solution.shortestSuperstring(words);
+
         // then
-        assertThat(solution.complexNumberMultiply(num1, num2)).isEqualTo(expected);
-        assertThat(solution.complexNumberMultiply2(num1, num2)).isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected);
     }
 
 }
