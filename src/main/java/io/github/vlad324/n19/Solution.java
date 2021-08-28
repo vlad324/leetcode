@@ -32,6 +32,33 @@ class Solution {
         return head;
     }
 
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+        int size = 0;
+        var node = head;
+        while (node != null) {
+            size++;
+            node = node.next;
+        }
+
+        int leave = size - n;
+
+        ListNode prev = null;
+        node = head;
+        while (leave > 0) {
+            prev = node;
+            node = node.next;
+            leave--;
+        }
+
+        if (prev == null) {
+            return node.next;
+        }
+
+        prev.next = node.next;
+
+        return head;
+    }
+
     static class ListNode {
         int val;
         ListNode next;

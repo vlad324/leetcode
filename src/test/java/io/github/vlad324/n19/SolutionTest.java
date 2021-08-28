@@ -49,4 +49,14 @@ class SolutionTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @MethodSource("testDataProvider")
+    void should_produce_expected_result2(ListNode head, int n, ListNode expected) {
+        // when
+        final var actual = solution.removeNthFromEnd2(head, n);
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }
