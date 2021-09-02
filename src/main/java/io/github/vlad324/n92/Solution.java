@@ -1,6 +1,6 @@
 package io.github.vlad324.n92;
 
-import java.util.Objects;
+import io.github.vlad324.common.ListNode;
 
 /**
  * {@link "https://leetcode.com/problems/reverse-linked-list-ii/"}
@@ -39,40 +39,5 @@ class Solution {
         }
 
         return prev;
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this(val, null);
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            final ListNode listNode = (ListNode) o;
-            return val == listNode.val && Objects.equals(next, listNode.next);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(val, next);
-        }
-
-        @Override
-        public String toString() {
-            return "{" +
-                "val=" + val +
-                ", next=" + next +
-                '}';
-        }
     }
 }

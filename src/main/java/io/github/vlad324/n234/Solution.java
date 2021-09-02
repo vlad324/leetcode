@@ -1,5 +1,7 @@
 package io.github.vlad324.n234;
 
+import io.github.vlad324.common.ListNode;
+
 /**
  * {@link "https://leetcode.com/problems/palindrome-linked-list/"}
  */
@@ -38,19 +40,5 @@ class Solution {
         }
 
         return previous;
-    }
-
-    static class ListNode {
-        private int val;
-        private ListNode next;
-
-        ListNode(int val) {
-            this(val, null);
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 }

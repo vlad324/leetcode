@@ -1,9 +1,10 @@
 package io.github.vlad324.n234;
 
+import static io.github.vlad324.common.CollectionUtils.linkedList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import io.github.vlad324.n234.Solution.ListNode;
+import io.github.vlad324.common.ListNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,8 +17,9 @@ class SolutionTest {
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.<Arguments>builder()
-            .add(arguments(new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(1)))), true))
-            .add(arguments(new ListNode(1, new ListNode(2)), false))
+            .add(arguments(linkedList(1, 2, 3, 2, 1), true))
+            .add(arguments(linkedList(1, 2, 2, 1), true))
+            .add(arguments(linkedList(1, 2), false))
             .build();
     }
 

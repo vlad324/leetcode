@@ -3,7 +3,7 @@ package io.github.vlad324.n237;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import io.github.vlad324.n237.Solution.ListNode;
+import io.github.vlad324.common.ListNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

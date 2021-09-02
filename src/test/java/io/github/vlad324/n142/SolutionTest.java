@@ -2,7 +2,7 @@ package io.github.vlad324.n142;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.github.vlad324.n142.Solution.ListNode;
+import io.github.vlad324.common.ListNode;
 import org.junit.jupiter.api.Test;
 
 class SolutionTest {

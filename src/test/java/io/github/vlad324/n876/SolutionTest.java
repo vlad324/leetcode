@@ -1,9 +1,10 @@
 package io.github.vlad324.n876;
 
+import static io.github.vlad324.common.CollectionUtils.linkedList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import io.github.vlad324.n876.Solution.ListNode;
+import io.github.vlad324.common.ListNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,25 +17,19 @@ class SolutionTest {
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.<Arguments>builder()
-            .add(arguments(
-                new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
-                new ListNode(3)
-            ))
-            .add(arguments(
-                new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6)))))),
-                new ListNode(4)
-            ))
+            .add(arguments(linkedList(1, 2, 3, 4, 5), 3))
+            .add(arguments(linkedList(1, 2, 3, 4, 5, 6), 4))
             .build();
     }
 
     @ParameterizedTest
     @MethodSource("testDataProvider")
-    void should_produce_expected_result(ListNode head, ListNode expected) {
+    void should_produce_expected_result(ListNode head, int expected) {
         // when
         final var actual = solution.middleNode(head);
 
         // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual.val).isEqualTo(expected);
     }
 
 }
