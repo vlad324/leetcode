@@ -12,36 +12,29 @@ class Solution {
             return ZERO;
         }
 
+        int position = 0;
         final var result = new int[num1.length() + num2.length()];
         for (int i = num2.length() - 1; i >= 0; i--) {
-            multiplyInner(result, num1, charToInt(num2.charAt(i)), num2.length() - 1 - i);
-        }
-
-        return convertToString(result);
-    }
-
-    private void multiplyInner(int[] result, String num, int b, int position) {
-        int carry = 0;
-        for (int i = num.length() - 1; i >= 0; i--) {
-            int m = charToInt(num.charAt(i)) * b + carry;
-
-            carry = m / 10;
-
-            result[position] += m % 10;
-            if (result[position] > 9) {
-                carry++;
-                result[position] %= 10;
-            }
+            multiplyInner(result, num1, charToInt(num2.charAt(i)), position);
             position++;
         }
 
-        while (carry != 0) {
-            result[position] += carry;
-            carry = 0;
-            if (result[position] > 9) {
-                carry++;
-                result[position] %= 10;
+        normalize(result);
+        return convertToString(result);
+    }
+
+    private void normalize(int[] result) {
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] > 9) {
+                result[i + 1] += result[i] / 10;
+                result[i] %= 10;
             }
+        }
+    }
+
+    private void multiplyInner(int[] result, String num, int b, int position) {
+        for (int i = num.length() - 1; i >= 0; i--) {
+            result[position] += charToInt(num.charAt(i)) * b;
             position++;
         }
     }
