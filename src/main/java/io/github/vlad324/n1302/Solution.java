@@ -1,5 +1,7 @@
 package io.github.vlad324.n1302;
 
+import io.github.vlad324.common.TreeNode;
+
 /**
  * {@link "https://leetcode.com/problems/deepest-leaves-sum/"}
  */
@@ -25,21 +27,5 @@ class Solution {
 
         dfs(root.left, level, levelAndSum);
         dfs(root.right, level, levelAndSum);
-    }
-
-    public static class TreeNode {
-        private final int val;
-        private final TreeNode left;
-        private final TreeNode right;
-
-        TreeNode(int val) {
-            this(val, null, null);
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

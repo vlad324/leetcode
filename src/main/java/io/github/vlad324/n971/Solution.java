@@ -1,5 +1,7 @@
 package io.github.vlad324.n971;
 
+import io.github.vlad324.common.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,22 +36,6 @@ class Solution {
         } else {
             i = dfs(root.left, voyage, i + 1, result);
             return dfs(root.right, voyage, i, result);
-        }
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int val) {
-            this(val, null, null);
-        }
-
-        public TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
         }
     }
 }
