@@ -1,7 +1,5 @@
 package io.github.vlad324.n547;
 
-import java.util.LinkedList;
-
 /**
  * {@link "https://leetcode.com/problems/number-of-provinces/"}
  */
@@ -23,20 +21,14 @@ class Solution {
     }
 
     private void visit(int[][] isConnected, int i, boolean[] visited) {
-        final var queue = new LinkedList<Integer>();
-        queue.add(i);
-        while (!queue.isEmpty()) {
-            final var current = queue.poll();
-            if (visited[current]) {
-                continue;
-            }
+        if (visited[i]) {
+            return;
+        }
 
-            visited[current] = true;
-
-            for (int j = 0; j < isConnected.length; j++) {
-                if (isConnected[current][j] == 1 && !visited[j]) {
-                    queue.add(j);
-                }
+        visited[i] = true;
+        for (int j = 0; j < isConnected.length; j++) {
+            if (isConnected[i][j] == 1) {
+                visit(isConnected, j, visited);
             }
         }
     }
