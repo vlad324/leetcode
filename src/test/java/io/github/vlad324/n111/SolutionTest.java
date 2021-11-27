@@ -16,7 +16,7 @@ class SolutionTest {
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.<Arguments>builder()
-//            .add(arguments(null, 0))
+            .add(arguments(null, 0))
             .add(arguments(new TreeNode(1), 1))
             .add(arguments(new TreeNode(1, new TreeNode(2), new TreeNode(3, new TreeNode(4), null)), 2))
             .build();

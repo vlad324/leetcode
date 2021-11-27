@@ -15,7 +15,7 @@ class SolutionTest {
 
     private static Stream<Arguments> testDataProvider() {
         return Stream.<Arguments>builder()
-//            .add(arguments(new int[]{1, 2, 0}, 3))
+            .add(arguments(new int[]{1, 2, 0}, 3))
             .add(arguments(new int[]{3, 4, -1, 1}, 2))
             .add(arguments(new int[]{7, 8, 9, 11, 12}, 1))
             .build();
