@@ -6,28 +6,16 @@ package io.github.vlad324.n238;
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         final var result = new int[nums.length];
-        int zeroCount = 0;
-        int k = 1;
-        for (final int num : nums) {
-            if (num == 0) {
-                zeroCount++;
-
-                if (zeroCount > 1) {
-                    return result;
-                }
-            } else {
-                k *= num;
-            }
+        int left = 1;
+        for (int i = 0; i < nums.length; i++) {
+            result[i] = left;
+            left *= nums[i];
         }
 
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) {
-                result[i] = k;
-            } else if (zeroCount != 0) {
-                result[i] = 0;
-            } else {
-                result[i] = k / nums[i];
-            }
+        int right = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            result[i] *= right;
+            right *= nums[i];
         }
 
         return result;
