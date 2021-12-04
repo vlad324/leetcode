@@ -52,36 +52,6 @@ class StreamChecker {
         return false;
     }
 
-//    public StreamChecker(String[] words) {
-//        this.root = new Node();
-//        this.queue = new LinkedList<>();
-//
-//        for (final var w : words) {
-//            var node = this.root;
-//            for (int i = 0; i < w.length(); i++) {
-//                node = node.children.compute(w.charAt(i), (k, v) -> v == null ? new Node() : v);
-//            }
-//
-//            node.isWord = true;
-//        }
-//    }
-//
-//    public boolean query(char letter) {
-//        boolean result = false;
-//        queue.add(this.root);
-//        final var size = queue.size();
-//        for (int i = 0; i < size; i++) {
-//            final var current = queue.poll().children.get(letter);
-//
-//            if (current != null) {
-//                queue.add(current);
-//                result = result || current.isWord;
-//            }
-//        }
-//
-//        return result;
-//    }
-
     private static class Node {
         Map<Character, Node> children;
         boolean isWord;

@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 class StreamCheckerTest {
 
-    //[["b"],["b"],["b"],["b"],["a"],["b"],["a"],["b"],["a"],["a"],["a"],["b"],["a"],["a"],["a"]]
-    //[true,false,false,false,true,true,true,true,true,true,false,true,true,true,false]
     @Test
     void should_produce_expected_result2() {
         // given
