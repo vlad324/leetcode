@@ -5,23 +5,25 @@ package io.github.vlad324.n45;
  */
 class Solution {
 
-    private static final int IMPOSSIBLE = Integer.MAX_VALUE;
-
     public int jump(int[] nums) {
         if (nums.length == 1) {
             return 0;
         }
 
-        nums[nums.length - 1] = 0;
-        for (int i = nums.length - 2; i >= 0; i--) {
-            int min = IMPOSSIBLE;
-            for (int j = Math.min(i + nums[i], nums.length - 1); j > i; j--) {
-                min = Math.min(nums[j], min);
+        int maxIndex = 0;
+        int count = 0;
+        int maxForCount = 0;
+        for (int i = 0; i < nums.length; i++) {
+            maxIndex = Math.max(maxIndex, i + nums[i]);
+            if (maxIndex >= nums.length - 1) {
+                return count + 1;
             }
-
-            nums[i] = min == IMPOSSIBLE ? IMPOSSIBLE : min + 1;
+            if (i == maxForCount) {
+                count++;
+                maxForCount = maxIndex;
+            }
         }
 
-        return nums[0];
+        return -1;
     }
 }
