@@ -5,7 +5,7 @@ import java.util.HashSet;
 /**
  * {@link "https://leetcode.com/problems/erect-the-fence/"}
  */
-public class Solution {
+class Solution {
     public int[][] outerTrees(int[][] points) {
         if (points.length < 4) {
             return points;
